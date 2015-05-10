@@ -16,17 +16,15 @@ data <- all_data[all_data$Date == "1/2/2007" | all_data$Date == "2/2/2007", ]
 data$DateTime <- strptime(paste(newdata$Date, newdata$Time), "%d/%m/%Y %H:%M:%S")
 
 
-
 ### prepare the png device
-png("plot1.png",  width = 480, height = 480)
+png("plot2.png",  width = 480, height = 480)
 
 
 ### create the picture
-hist(data$Global_active_power, 
-     xlab = "Global Active Power (kilowatts)", 
-     ylab = "Frequency", 
-     main = "Global Active Power", 
-     col = "red")
+plot(data$DateTime, data$Global_active_power, 
+     xlab = "", ylab = "Global Active Power (kilowatts)", 
+     pch=NA, 
+     lines(data$DateTime, data$Global_active_power))
 
 
 ### close the device
